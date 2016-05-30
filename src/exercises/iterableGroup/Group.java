@@ -17,7 +17,7 @@ public class Group implements Iterable<Student> {
 
     private static class StudentsIterator implements Iterator<Student> {
 
-        private int index =0;
+        private int index = 0;
 
         private final Student[] students;
 
