@@ -1,7 +1,12 @@
+// Student - класс пустышка
+// University - класс, который хранит в себе массив студентов
+// Задача! Сделать класс University "перечисляемым" (Iterable) по
+// типу Student (Iterable<Student>), чтобы объекты этого класса можно
+// было использовать в цикле for-each
+
 package exercises.interfaceIterable;
 
 import java.util.Iterator;
-import java.util.Arrays;
 
 public class MainIterator {
 
