@@ -39,7 +39,7 @@ public class University {
         @Override
         public Student next() {
             if (hasNext()) {
-                return University.this.students[index];
+                return University.this.students[index++];
             } else {
                 throw new NoSuchElementException();
             }

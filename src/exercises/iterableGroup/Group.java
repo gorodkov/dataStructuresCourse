@@ -1,5 +1,7 @@
 package exercises.iterableGroup;
 
+import java.util.Iterator;
+
 public class Group {
 
     private Student[] students;
@@ -13,9 +15,21 @@ public class Group {
     }
 
     private static class StudentsIterator implements Iterator<Student> {
-        // BEGIN (write your solution here)
 
-        // END
+        private int index =0;
+
+
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public Student next() {
+            return null;
+        }
+
     }
 
 }
