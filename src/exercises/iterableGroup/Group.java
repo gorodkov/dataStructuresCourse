@@ -27,7 +27,7 @@ public class Group {
 
         @Override
         public boolean hasNext() {
-            return return University.this.students.length > index;;
+            return this.students.length > index;
         }
 
         @Override
