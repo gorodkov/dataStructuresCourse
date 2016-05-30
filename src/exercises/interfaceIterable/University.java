@@ -13,8 +13,6 @@ public class University implements Iterable<Student> {
 
     @Override
     public Iterator<Student> iterator() {
-
         return Arrays.asList(students).iterator();
-
     }
 }

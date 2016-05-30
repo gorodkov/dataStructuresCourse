@@ -1,5 +1,3 @@
 package exercises.interfaceIterable;
 
-public class Student {
-
-}
+public class Student {}
