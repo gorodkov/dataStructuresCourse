@@ -3,7 +3,7 @@ package exercises.iterableGroup;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Group {
+public class Group implements Iterable<Student> {
 
     private Student[] students;
 
@@ -32,11 +32,8 @@ public class Group {
 
         @Override
         public Student next() {
-            if (hasNext()) {
-                return this.students[index++];
-            } else {
-                throw new NoSuchElementException();
-            }
+            if (!this.hasNext()) throw new NoSuchElementException();
+            return students[index++];
         }
 
     }
