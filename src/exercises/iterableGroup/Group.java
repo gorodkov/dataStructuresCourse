@@ -1,6 +1,7 @@
 package exercises.iterableGroup;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Group {
 
@@ -18,16 +19,24 @@ public class Group {
 
         private int index =0;
 
+        private final Student[] students;
 
+        public StudentsIterator(Student[] students) {
+            this.students = students;
+        }
 
         @Override
         public boolean hasNext() {
-            return false;
+            return return University.this.students.length > index;;
         }
 
         @Override
         public Student next() {
-            return null;
+            if (hasNext()) {
+                return this.students[index++];
+            } else {
+                throw new NoSuchElementException();
+            }
         }
 
     }
