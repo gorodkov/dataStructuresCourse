@@ -1,3 +1,21 @@
+//Реализовать необходимо только не default методы, а именно:
+//        boolean add(E e)
+//        boolean addAll(Collection<? extends E> c)
+//        void clear()
+//        boolean contains(Object o)
+//        boolean containsAll(Collection<?> c)
+//        boolean equals(Object o)
+//        int hashCode()
+//        boolean isEmpty()
+//        Iterator iterator()
+//        boolean remove(Object o)
+//        boolean removeAll(Collection<?> c)
+//        boolean retainAll(Collection<?> c)
+//        int size()
+//        Object[] toArray()
+//        T[] toArray(T[] a)
+
+
 package exercises.collection;
 
 import java.util.Collection;
