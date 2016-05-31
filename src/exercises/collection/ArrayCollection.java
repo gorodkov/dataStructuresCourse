@@ -1,4 +1,4 @@
-//Реализовать необходимо только не default методы, а именно:
+///*Реализовать необходимо только не default методы, а именно:
 //        boolean add(E e)
 //        boolean addAll(Collection<? extends E> c)
 //        void clear()
@@ -13,13 +13,14 @@
 //        boolean retainAll(Collection<?> c)
 //        int size()
 //        Object[] toArray()
-//        T[] toArray(T[] a)
+//        T[] toArray(T[] a)*/
 
 
 package exercises.collection;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayCollection<T> implements Collection<T> {
 
@@ -29,100 +30,118 @@ public class ArrayCollection<T> implements Collection<T> {
 
     @Override
     public int size() {
-        // BEGIN (write your solution here)
-
-        // END
+        return this.size;
     }
 
     @Override
     public boolean isEmpty() {
-        // BEGIN (write your solution here)
-
-        // END
+        return this.size() == 0;
     }
 
     @Override
     public boolean contains(final Object o) {
-        // BEGIN (write your solution here)
-
-        // END
+        for (int i = 0; i < size; i++) {
+            if (m[i].equals(o)) return true;
+        }
+        return false;
     }
 
     @Override
     public Iterator<T> iterator() {
-        // BEGIN (write your solution here)
-
-        // END
+        return new ElementsIterator();
     }
 
     @Override
     public Object[] toArray() {
-        // BEGIN (write your solution here)
-
-        // END
+        final T[] newM = (T[])new Object[this.size()];
+        System.arraycopy(m, 0, newM, 0, this.size());
+        return newM;
     }
 
     @Override
     public <T1> T1[] toArray(T1[] a) {
-        // BEGIN (write your solution here)
-
-        // END
+        return (T1[]) this.toArray();
     }
 
     @Override
     public boolean add(final T t) {
-        // BEGIN (write your solution here)
-
-        // END
+        if (m.length == size) {
+            final T[] oldM = m;
+            m = (T[]) new Object[this.size() * 2];
+            System.arraycopy(oldM, 0, m, 0, oldM.length);
+        }
+        m[size++] = t;
+        return true;
     }
 
     @Override
     public boolean remove(final Object o) {
-        // BEGIN (write your solution here)
-
-        // END
+        for (int i = 0; i < size(); i++) {
+            if (m[i].equals(o)) {
+                if (i != this.size() - 1)
+                    System.arraycopy(m, i + 1, m, i, this.size() - i - 1);
+                size--;
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean containsAll(final Collection<?> c) {
-        // BEGIN (write your solution here)
-
-        // END
+        for (final Object item : c) {
+            if (!this.contains(item)) return false;
+        }
+        return true;
     }
 
     @Override
     public boolean addAll(final Collection<? extends T> c) {
-        // BEGIN (write your solution here)
-
-        // END
+        for (final T item : c) {
+            this.add(item);
+        }
+        return true;
     }
 
     @Override
     public boolean removeAll(final Collection<?> c) {
-        // BEGIN (write your solution here)
-
-        // END
+        for (final Object item : c) {
+            this.remove(item);
+        }
+        return true;
     }
 
     @Override
     public boolean retainAll(final Collection<?> c) {
-        // BEGIN (write your solution here)
+        for (int i = 0; i < size(); i++)
+            if (!c.contains(m[i])) {
+                this.remove(m[i]);
+                i--;
+            }
 
-        // END
+    return true;
     }
 
     @Override
     public void clear() {
-        // BEGIN (write your solution here)
-
-        // END
+        m = (T[])new Object[1];
+        size = 0;
     }
 
     private class ElementsIterator implements Iterator<T> {
-        // BEGIN (write your solution here)
 
+        private int index = 0;
 
-        // END
+        @Override
+        public boolean hasNext() {
+            return ArrayCollection.this.m.length > index;
+        }
+
+        @Override
+        public T next() {
+            if (!this.hasNext()) throw new NoSuchElementException();
+            return m[index++];
+        }
     }
 
 }
