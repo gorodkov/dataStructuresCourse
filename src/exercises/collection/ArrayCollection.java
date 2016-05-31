@@ -113,13 +113,13 @@ public class ArrayCollection<T> implements Collection<T> {
 
     @Override
     public boolean retainAll(final Collection<?> c) {
-        for (int i = 0; i < size(); i++)
+        for (int i = 0; i < size(); i++) {
             if (!c.contains(m[i])) {
                 this.remove(m[i]);
                 i--;
             }
-
-    return true;
+        }
+        return true;
     }
 
     @Override
