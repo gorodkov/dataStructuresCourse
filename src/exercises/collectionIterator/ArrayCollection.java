@@ -118,21 +118,35 @@ public class ArrayCollection<T> implements Collection<T> {
     }
 
     private class ElementsIterator implements Iterator<T> {
+
         private int index = 0;
+        private int lastIndex = -1;
 
         @Override
         public boolean hasNext() {
-            return ArrayCollection.this.m.length > index;
+            return index < ArrayCollection.this.size();
         }
 
         @Override
         public T next() {
-            if (!this.hasNext()) throw new NoSuchElementException();
+            if (!this.hasNext())  throw new NoSuchElementException();
+            lastIndex = index;
             return m[index++];
         }
 
-
+        @Override
+        public void remove() {
+            if (lastIndex < 0) {
+                throw new IllegalStateException();
+            }
+            ArrayCollection.this.remove(lastIndex);
+            if (m[lastIndex] != null) {
+                index = lastIndex;
+            }
+            lastIndex = -1;
+        }
     }
-
 }
+
+
 
