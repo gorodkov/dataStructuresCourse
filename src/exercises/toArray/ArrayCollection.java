@@ -149,3 +149,15 @@ public class ArrayCollection<T> implements Collection<T> {
 
 }
 
+/*
+// BEGIN
+if (a.length < size)
+        return (T1[]) Arrays.copyOf(m, size, a.getClass());
+
+        System.arraycopy(m, 0, a, 0, size);
+
+        if (a.length > size)
+        a[size] = null;
+
+        return a;
+// END*/
