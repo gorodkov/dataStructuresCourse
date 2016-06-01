@@ -129,7 +129,9 @@ public class ArrayCollection<T> implements Collection<T> {
 
         @Override
         public T next() {
-            if (!this.hasNext())  throw new NoSuchElementException();
+            if (!this.hasNext()) {
+                throw new NoSuchElementException();
+            }
             lastIndex = index;
             return m[index++];
         }
@@ -148,5 +150,30 @@ public class ArrayCollection<T> implements Collection<T> {
     }
 }
 
-
+//    // BEGIN
+//    private int index;
+//
+//    private int last = -1;
+//
+//    @Override
+//    public boolean hasNext() {
+//        return ArrayCollection.this.size() > index;
+//    }
+//
+//    @Override
+//    public T next() {
+//        if (!hasNext())
+//            throw new NoSuchElementException();
+//        last = index;
+//        return ArrayCollection.this.m[index++];
+//    }
+//
+//    public void remove() {
+//        if (last == -1)
+//            throw new IllegalStateException();
+//        ArrayCollection.this.remove(last);
+//        index--;
+//        last = -1;
+//    }
+//// END
 
