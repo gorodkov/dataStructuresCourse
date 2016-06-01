@@ -118,9 +118,20 @@ public class ArrayCollection<T> implements Collection<T> {
     }
 
     private class ElementsIterator implements Iterator<T> {
-        // BEGIN (write your solution here)
+        private int index = 0;
 
-        // END
+        @Override
+        public boolean hasNext() {
+            return ArrayCollection.this.m.length > index;
+        }
+
+        @Override
+        public T next() {
+            if (!this.hasNext()) throw new NoSuchElementException();
+            return m[index++];
+        }
+
+
     }
 
 }
