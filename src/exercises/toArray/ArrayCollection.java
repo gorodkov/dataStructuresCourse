@@ -2,8 +2,8 @@ package exercises.toArray;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.NoSuchElementException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayCollection<T> implements Collection<T> {
 
@@ -43,9 +43,12 @@ public class ArrayCollection<T> implements Collection<T> {
 
     @Override
     public <T1> T1[] toArray(final T1[] a) {
-        // BEGIN (write your solution here)
-
-        // END
+        if (size <= a.length) {
+            System.arraycopy(m, 0, a, 0, this.size());
+            return a;
+        } else {
+            return (T1[])Arrays.copyOf(m, this.size(), a.getClass());
+        }
     }
 
     @Override
