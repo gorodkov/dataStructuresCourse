@@ -1,3 +1,9 @@
+//Реализовать необходимо методы (в точности так, как описано в документации):
+//
+//        boolean hasNext()
+//        E next()
+//        void remove()
+
 package exercises.collectionIterator;
 
 import java.util.Collection;
