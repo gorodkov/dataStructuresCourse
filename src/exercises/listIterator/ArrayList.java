@@ -198,9 +198,7 @@ public class ArrayList<T> implements List<T> {
         }
 
         public ElementsIterator(final int index) {
-            // BEGIN (write your solution here)
-
-            // END
+            this.index = index;
         }
 
         @Override
@@ -208,7 +206,7 @@ public class ArrayList<T> implements List<T> {
             return ArrayList.this.size() > index;
         }
 
-        @Override
+             @Override
         public T next() {
             if (!hasNext())
                 throw new NoSuchElementException();
@@ -223,37 +221,37 @@ public class ArrayList<T> implements List<T> {
 
         @Override
         public void set(final T element) {
-            // BEGIN (write your solution here)
-
-            // END
+            if (last < 0) {
+                throw new IllegalStateException();
+            }
+            ArrayList.this.set(last, element);
         }
 
         @Override
         public int previousIndex(){
-            // BEGIN (write your solution here)
-
-            // END
+            return index-1;
         }
 
         @Override
         public int nextIndex() {
-            // BEGIN (write your solution here)
-
-            // END
+            return index;
         }
 
         @Override
         public boolean hasPrevious() {
-            // BEGIN (write your solution here)
-
-            // END
+            return index != 0;
         }
 
         @Override
         public T previous() {
-            // BEGIN (write your solution here)
-
-            // END
+            try {
+                int i = index - 1;
+                T previous = get(i);
+                last = index = i;
+                return previous;
+            } catch (IndexOutOfBoundsException e) {
+                throw new NoSuchElementException();
+            }
         }
 
         @Override
