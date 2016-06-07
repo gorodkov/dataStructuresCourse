@@ -10,7 +10,8 @@
  * для сессии сравнение немного сложнее - мы должны сравнивать дату начала сессии и курс,
  * к которому привязана сессия; только если оба эти значения одинаковы мы будем считать,
  * что сессии также одинаковы.
-*/
+ */
+
 
 package exercises.overridingEquals;
 
@@ -91,3 +92,28 @@ public class Course {
 
 }
 
+/**
+ * // BEGIN
+ * if (!(object instanceof Course))
+ *        return false;
+ *
+ * final Course that = (Course) object;
+ * if (!that.getUuid().equals(this.getUuid()))
+ *      return false;
+ *
+ * return true;
+ * // END
+ *
+ *
+ *
+ * // BEGIN
+ * if (!(object instanceof Session)) return false;
+ *
+ * final Session that = (Session) object;
+ * if (!that.getStartDate().equals(this.getStartDate())) return false;
+ *
+ * if (!that.getCourse().equals(this.getCourse())) return false;
+ *
+ * return true;
+ * // END
+ */
