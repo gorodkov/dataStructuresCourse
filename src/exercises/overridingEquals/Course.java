@@ -45,9 +45,16 @@ public class Course {
 
     @Override
     public boolean equals(final Object object) {
-        // BEGIN (write your solution here)
+        if (!(object instanceof Course)) {
+            return  false;
+        }
+        final Course other = (Course) object;
 
-        // END
+        if (other.uuid.equals(this.uuid)) {
+            return true;
+        } else {
+            return  false;
+        }
     }
 
     public class Session {
@@ -68,9 +75,16 @@ public class Course {
 
         @Override
         public boolean equals(final Object object) {
-            // BEGIN (write your solution here)
+            if (!(object instanceof Course.Session)) {
+                return  false;
+            }
+            final Course.Session otherSession = (Course.Session) object;
 
-            // END
+            if (otherSession.getStartDate().equals(this.getStartDate()) && Course.super.equals(otherSession.getCourse())) {
+                return true;
+            } else {
+                return  false;
+            }
         }
 
     }
