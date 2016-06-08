@@ -53,9 +53,16 @@ public class Course {
 
     @Override
     public int hashCode() {
-        // BEGIN (write your solution here)
-
-        // END
+        if (getUuid() == null || getUuid() == "") {
+            return 0;
+        } else {
+            int result = 0;
+            final String uuid = getUuid();
+            for (int i = 0; i < uuid.length(); i++) {
+                result += uuid.charAt(i);
+            }
+            return result;
+        }
     }
 
     public class Session {
@@ -88,9 +95,7 @@ public class Course {
 
         @Override
         public int hashCode() {
-            // BEGIN (write your solution here)
-
-            // END
+            return startDate.hashCode();
         }
 
     }
