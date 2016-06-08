@@ -102,3 +102,17 @@ public class Course {
 
 }
 
+/**
+ * // BEGIN
+ * if (null == uuid || "".equals(uuid)) return 0;
+ * int code = 0;
+ * for (char ch : uuid.toCharArray()) code += ch;
+ * return code;
+ * // END
+ *
+ *
+ * // BEGIN
+ * return startDate.hashCode();
+ * // END
+ *
+ */
