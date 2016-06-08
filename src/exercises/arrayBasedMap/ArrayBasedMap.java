@@ -1,3 +1,24 @@
+/**
+ * В Вашем распоряжении есть список пар, каждая пара представлена в виде объекта типа ArrayBasedMap.Pair
+ * Ваша задача реализовать следующие методы интерфейса Map:
+ *
+ * size()
+ * isEmpty()
+ * containsKey(Object key)
+ * containsValue(Object value)
+ * get(Object key) {
+ * put(K key, V value)
+ * remove(Object key)
+ * clear()
+ * values()
+ * Некоторые методы уже реализованы за Вас, например:
+ *
+ * entrySet() - мы еще не рассматривали тему Set
+ * keySet() - по той же причине
+ * putAll(Map<? extends K, ? extends V> m) - требует немного магии Generics
+ *
+ */
+
 package exercises.arrayBasedMap;
 
 import java.util.*;
