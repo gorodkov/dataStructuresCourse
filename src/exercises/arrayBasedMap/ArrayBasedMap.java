@@ -29,51 +29,63 @@ public class ArrayBasedMap<K, V> implements Map<K, V> {
 
     @Override
     public int size() {
-        // BEGIN (write your solution here)
-
-        // END
+        return values.size();
     }
 
     @Override
     public boolean isEmpty() {
-        // BEGIN (write your solution here)
-
-        // END
+        return values.isEmpty();
     }
 
     @Override
     public boolean containsKey(Object key) {
-        // BEGIN (write your solution here)
-
-        // END
+        for (Pair p : values)
+            if (p.getKey().equals(key)) return true;
+        return false;
     }
 
     @Override
     public boolean containsValue(Object value) {
-        // BEGIN (write your solution here)
-
-        // END
+        for (Pair p : values)
+            if (p.getValue().equals(value)) return true;
+        return false;
     }
 
     @Override
     public V get(Object key) {
-        // BEGIN (write your solution here)
-
-        // END
+        for (Pair p : values)
+            if (p.getKey().equals(key)) return p.getValue();
+        return null;
     }
 
     @Override
     public V put(K key, V value) {
-        // BEGIN (write your solution here)
-
-        // END
+        V result = value;
+        if (!containsKey(key)) {
+            values.add(new Pair(key, value));
+            return null;
+        }
+        for (Pair p : values)
+            if (p.getKey().equals(key)) {
+                result = p.getValue();
+                p.setValue(value);
+                break;
+            }
+        return result;
     }
 
     @Override
     public V remove(Object key) {
-        // BEGIN (write your solution here)
-
-        // END
+        V value = null;
+        for (int i = 0; i < values.size(); i++) {
+            final Pair p = values.get(i);
+            if (p.getKey().equals(key)) {
+                value = p.getValue();
+                values.remove(i);
+                return value;
+            }
+        }
+        return value;
     }
 
     @Override
@@ -84,9 +96,7 @@ public class ArrayBasedMap<K, V> implements Map<K, V> {
 
     @Override
     public void clear() {
-        // BEGIN (write your solution here)
-
-        // END
+        values.clear();
     }
 
     @Override
@@ -98,9 +108,9 @@ public class ArrayBasedMap<K, V> implements Map<K, V> {
 
     @Override
     public Collection<V> values() {
-        // BEGIN (write your solution here)
-
-        // END
+        final List<V> val = new ArrayList<>();
+        for (Pair p : values) val.add(p.getValue());
+        return val;
     }
 
     @Override
